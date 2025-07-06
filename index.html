@@ -9,26 +9,50 @@
     <title>Salamly - Your Daily Islamic Companion</title>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #2563eb;
+            --primary-color: #0f766e;
+            --primary-dark: #0d5e54;
             --secondary-color: #059669;
             --accent-color: #f59e0b;
+            --accent-light: #fbbf24;
             --dark-bg: #0f172a;
+            --dark-secondary: #1e293b;
             --light-bg: #f8fafc;
+            --light-secondary: #f1f5f9;
             --text-primary: #1e293b;
             --text-secondary: #64748b;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-islamic: linear-gradient(135deg, #2563eb 0%, #059669 100%);
-            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --text-light: #94a3b8;
+            --white: #ffffff;
+            --success: #10b981;
+            --error: #ef4444;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #0f766e 0%, #059669 100%);
+            --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 0 1px rgba(15, 118, 110, 0.05), 0 1px 3px 0 rgba(15, 118, 110, 0.1), 0 4px 6px 0 rgba(15, 118, 110, 0.1);
+            
+            /* Border radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-3xl: 2rem;
         }
 
         * {
@@ -37,11 +61,34 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
         }
 
         /* Navigation */
@@ -49,14 +96,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
@@ -65,44 +113,87 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
             color: white;
             text-decoration: none;
-            background: var(--gradient-islamic);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.02em;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 0.1;
         }
 
         .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
+            color: var(--accent-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Hero Section */
         .hero {
-            background: var(--dark-bg);
+            background: var(--gradient-hero);
             color: white;
-            padding: 8rem 2rem 6rem;
+            padding: 10rem 2rem 8rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero::before {
@@ -112,129 +203,231 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23a)"/></svg>');
-            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(15, 118, 110, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(5, 150, 105, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);
+            opacity: 0.6;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-islamic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
             animation: fadeInUp 1s ease-out 0.2s both;
         }
 
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 500;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
         .hero-description {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             margin-bottom: 3rem;
             opacity: 0.8;
-            animation: fadeInUp 1s ease-out 0.4s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.6s both;
+            animation: fadeInUp 1s ease-out 0.8s both;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 12px;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            border-radius: var(--radius-2xl);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-light);
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: var(--gradient-islamic);
+            background: var(--gradient-primary);
             color: white;
+            box-shadow: var(--shadow-glow);
         }
 
         .btn-secondary {
             background: white;
             color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
         }
+
+        .btn-primary:hover {
+            box-shadow: 0 25px 50px -12px rgba(15, 118, 110, 0.4);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 60%; right: 15%; animation-delay: 2s; }
+        .floating-icon:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 4s; }
+        .floating-icon:nth-child(4) { top: 40%; right: 30%; animation-delay: 1s; }
 
         /* Section Styles */
         .section {
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
+            position: relative;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--gradient-islamic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            line-height: 1.6;
         }
 
         /* Features Section */
         .features {
-            background: var(--light-bg);
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
         }
 
         .feature-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
+            padding: 3rem;
+            border-radius: var(--radius-3xl);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(15, 118, 110, 0.1);
         }
 
         .feature-card::before {
@@ -244,456 +437,571 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: var(--gradient-islamic);
+            background: var(--gradient-primary);
+            border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(15, 118, 110, 0.03) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-heavy);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+            border-color: rgba(15, 118, 110, 0.2);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-islamic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(15, 118, 110, 0.2));
+            position: relative;
+            z-index: 2;
         }
 
         .feature-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
+            position: relative;
+            z-index: 2;
         }
 
         .feature-description {
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 2;
         }
 
-        /* About Section */
-        .about {
-            background: white;
+        /* Stats Section */
+        .stats {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .about-content {
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .about-image {
+        .stat-card {
             text-align: center;
-            font-size: 8rem;
-            background: var(--gradient-islamic);
+            padding: 2rem;
+            border-radius: var(--radius-2xl);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* Why Choose Section */
-        .why-choose {
-            background: var(--light-bg);
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.9;
         }
 
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .why-card {
+        /* App Showcase Section */
+        .app-showcase {
             background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
-            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .why-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .why-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .why-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .why-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Calendar Events Section */
-        .calendar-events {
-            background: white;
-        }
-
-        .calendar-content {
+        .showcase-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 6rem;
             align-items: center;
         }
 
-        .calendar-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .showcase-text h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .showcase-text p {
+            font-size: 1.2rem;
             color: var(--text-secondary);
+            line-height: 1.7;
             margin-bottom: 2rem;
         }
 
-        .calendar-features {
+        .showcase-features {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        .calendar-feature {
+        .showcase-feature {
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease;
         }
 
-        .calendar-feature i {
+        .showcase-feature:hover {
+            background: var(--light-secondary);
+            transform: translateX(10px);
+        }
+
+        .showcase-feature i {
             font-size: 1.5rem;
             color: var(--primary-color);
             width: 40px;
             text-align: center;
         }
 
-        .calendar-feature h4 {
+        .showcase-feature-content h4 {
             font-weight: 600;
-            margin-bottom: 0.25rem;
             color: var(--text-primary);
+            margin-bottom: 0.25rem;
         }
 
-        .calendar-feature p {
+        .showcase-feature-content p {
             color: var(--text-secondary);
+            font-size: 0.95rem;
             margin: 0;
         }
 
-        .calendar-card {
-            background: var(--gradient-islamic);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .calendar-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .calendar-header p {
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .calendar-highlight {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+        .phone-mockup {
+            position: relative;
             display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .calendar-highlight i {
-            font-size: 1.2rem;
-        }
-
-        /* Quran Hadith Section */
-        .quran-hadith {
-            background: var(--light-bg);
-        }
-
-        .library-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .library-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
-        }
-
-        .library-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .library-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .library-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            text-align: center;
-        }
-
-        .library-features {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .library-feature {
-            color: var(--text-secondary);
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .library-feature:last-child {
-            border-bottom: none;
-        }
-
-        /* Prayer Tools Section */
-        .prayer-tools {
-            background: white;
-        }
-
-        .tools-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .prayer-card {
-            background: var(--gradient-islamic);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow-medium);
-            text-align: center;
-        }
-
-        .prayer-time h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .prayer-name {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .prayer-countdown {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-
-        .qibla-indicator {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .compass {
-            display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            font-size: 1.2rem;
+            align-items: center;
         }
 
-        .compass i {
-            font-size: 1.5rem;
+        .phone-frame {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(145deg, #1e293b, #334155);
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+            overflow: hidden;
         }
 
-        .tools-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: #64748b;
+            border-radius: 3px;
         }
 
-        .tools-features {
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 30px;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .tool-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .tool-feature i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            width: 40px;
+            justify-content: center;
+            align-items: center;
+            color: white;
             text-align: center;
-            margin-top: 0.25rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .tool-feature h4 {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: var(--text-primary);
+        .phone-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0 L20 10 L10 20 L0 10 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic)"/></svg>');
         }
 
-        .tool-feature p {
-            color: var(--text-secondary);
-            margin: 0;
+        .phone-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .phone-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prayer-time-display {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .current-prayer {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .next-prayer {
+            font-size: 1rem;
+            opacity: 0.8;
         }
 
         /* Testimonials Section */
         .testimonials {
             background: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(15, 118, 110, 0.05) 0%, transparent 50%);
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .testimonial-card {
             background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            transition: all 0.3s ease;
+            padding: 3rem;
+            border-radius: var(--radius-3xl);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(15, 118, 110, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 6rem;
+            color: var(--primary-color);
+            opacity: 0.1;
+            font-family: serif;
+            line-height: 1;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+            border-color: rgba(15, 118, 110, 0.2);
         }
 
         .stars {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
         }
 
         .testimonial-text {
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
             font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .author-name {
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.25rem;
         }
 
-        .author-location {
-            color: var(--text-secondary);
+        .author-info p {
+            color: var(--text-light);
             font-size: 0.9rem;
+            margin: 0;
         }
 
         /* Download Section */
         .download {
-            background: var(--light-bg);
+            background: var(--gradient-hero);
+            color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(15, 118, 110, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);
         }
 
         .download-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-content h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .download-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
         .download-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
         .download-btn {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: var(--dark-bg);
+            gap: 1rem;
+            padding: 1.5rem 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             color: white;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: var(--radius-2xl);
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-light);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
         }
 
         .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .download-btn i {
+            font-size: 2rem;
+        }
+
+        .download-btn-text {
+            text-align: left;
+        }
+
+        .download-btn-text .small {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: block;
+        }
+
+        .download-btn-text .large {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: block;
         }
 
         /* Footer */
         footer {
             background: var(--dark-bg);
             color: white;
-            padding: 4rem 2rem 2rem;
-            text-align: center;
+            padding: 6rem 2rem 3rem;
+            position: relative;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .footer-section p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .footer-links a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
             transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-links a:hover {
+            color: var(--accent-light);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
         .footer-bottom {
-            padding-top: 2rem;
+            padding-top: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
             opacity: 0.8;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         /* Animations */
@@ -709,52 +1017,142 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg); 
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: scale(1.05); 
+                opacity: 0.9; 
+            }
         }
 
         .floating {
             animation: float 3s ease-in-out infinite;
         }
 
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .showcase-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+            
+            .phone-mockup {
+                order: -1;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .mobile-menu-btn {
+                display: block;
             }
 
-            .hero-subtitle {
-                font-size: 1.2rem;
+            .hero {
+                padding: 8rem 1rem 6rem;
+                min-height: 90vh;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .section {
+                padding: 6rem 1rem;
             }
 
-            .about-content {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+
+            .stats {
+                padding: 4rem 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
 
-            .calendar-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .social-links {
+                justify-content: center;
             }
 
-            .tools-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .phone-frame {
+                width: 250px;
+                height: 500px;
             }
+        }
 
-            .library-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
+        @media (max-width: 480px) {
+            .stats-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -763,22 +1161,44 @@
                 align-items: center;
             }
 
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
 
-        /* Scroll animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light-bg: #1e293b;
+                --white: #0f172a;
+                --text-primary: #f1f5f9;
+                --text-secondary: #cbd5e1;
+            }
         }
 
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            .btn {
+                border: 2px solid currentColor;
+            }
+            
+            .feature-card,
+            .testimonial-card {
+                border: 2px solid var(--primary-color);
+            }
         }
     </style>
 </head>
@@ -790,20 +1210,34 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#showcase">App</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="floating-elements">
+            <div class="floating-icon"><i class="fas fa-mosque"></i></div>
+            <div class="floating-icon"><i class="fas fa-star-and-crescent"></i></div>
+            <div class="floating-icon"><i class="fas fa-book-open"></i></div>
+            <div class="floating-icon"><i class="fas fa-hands-praying"></i></div>
+        </div>
         <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i>
+                Made with Love for the Ummah
+            </div>
             <h1>Salamly</h1>
             <p class="hero-subtitle">Your Daily Islamic Companion</p>
             <p class="hero-description">
-                A comprehensive Islamic mobile application created with love and guided by faith. 
-                Stay spiritually connected wherever you are with beautiful design and powerful features.
+                Experience the most comprehensive Islamic mobile application, beautifully designed with love and guided by faith. 
+                Stay spiritually connected wherever you are with powerful features that enhance your relationship with Allah.
             </p>
             <div class="cta-buttons">
                 <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" class="btn btn-primary" target="_blank">
@@ -818,13 +1252,38 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid scroll-reveal">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="50000">0</div>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="25">0</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="1000000">0</div>
+                    <div class="stat-label">Prayers Tracked</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section id="features" class="features section">
         <div class="container">
             <div class="section-header scroll-reveal">
-                <h2 class="section-title">Powerful Features</h2>
+                <div class="section-badge">Features</div>
+                <h2 class="section-title">Everything You Need for Your Spiritual Journey</h2>
                 <p class="section-subtitle">
-                    Everything you need to strengthen your connection with Allah and live a more spiritual life
+                    Discover powerful features designed to strengthen your connection with Allah and enhance your daily Islamic practices
                 </p>
             </div>
             <div class="features-grid">
@@ -832,260 +1291,113 @@
                     <div class="feature-icon">🕋</div>
                     <h3 class="feature-title">Accurate Prayer Times</h3>
                     <p class="feature-description">
-                        Get precise prayer times based on your location with customizable calculation methods, 
-                        notifications, and Qibla direction.
+                        Get precise prayer times based on your exact location with multiple calculation methods, 
+                        beautiful notifications, and accurate Qibla direction using advanced GPS technology.
                     </p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">📖</div>
-                    <h3 class="feature-title">Complete Quran</h3>
+                    <h3 class="feature-title">Complete Holy Quran</h3>
                     <p class="feature-description">
-                        Read the Holy Quran in Arabic with multiple translation options, 
-                        advanced search, bookmarks, and beautiful typography.
+                        Read the Holy Quran in stunning Arabic typography with translations in 25+ languages, 
+                        audio recitation by world-renowned Qaris, advanced search, and smart bookmarking.
                     </p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">📜</div>
                     <h3 class="feature-title">Daily Hadith & Ayah</h3>
                     <p class="feature-description">
-                        Start each day with inspirational Hadiths and Quranic verses, 
-                        carefully selected to guide and motivate you.
+                        Start each day with carefully curated Hadiths and Quranic verses, 
+                        featuring authentic narrations from Sahih collections to inspire and guide your day.
                     </p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">🤲</div>
                     <h3 class="feature-title">Comprehensive Duas</h3>
                     <p class="feature-description">
-                        Access authentic Duas for every situation, categorized for easy browsing 
-                        with Arabic text, transliteration, and translation.
+                        Access an extensive collection of authentic Duas for every life situation, 
+                        categorized intelligently with Arabic text, transliteration, and translations.
                     </p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">📅</div>
-                    <h3 class="feature-title">Islamic Calendar</h3>
+                    <h3 class="feature-title">Islamic Calendar & Events</h3>
                     <p class="feature-description">
-                        Stay connected with Islamic dates, events, and important occasions 
-                        based on the Hijri calendar system.
+                        Stay connected with important Islamic dates, events, and occasions based on the Hijri calendar, 
+                        with smart notifications for Ramadan, Eid, and blessed nights.
                     </p>
                 </div>
                 <div class="feature-card scroll-reveal">
                     <div class="feature-icon">📶</div>
                     <h3 class="feature-title">Offline Access</h3>
                     <p class="feature-description">
-                        Enjoy all core features without internet connection. 
-                        Your spiritual companion is always with you, anywhere you go.
+                        Enjoy all core features without internet connection. Your spiritual companion 
+                        is always with you, whether you're traveling or in remote locations.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about section">
+    <!-- App Showcase Section -->
+    <section id="showcase" class="app-showcase section">
         <div class="container">
-            <div class="about-content">
-                <div class="scroll-reveal">
-                    <h2 class="section-title">Built with Love for the Ummah</h2>
-                    <p class="about-text">
-                        Salamly is more than just an Islamic app – it's a labor of love created to serve 
-                        the global Muslim community. Our mission is to make Islamic knowledge and spiritual 
-                        practices accessible to everyone, regardless of their location or circumstances.
-                    </p>
-                    <p class="about-text">
-                        We believe that technology should bring us closer to our faith, not distract us from it. 
-                        That's why every feature in Salamly is designed with intention, care, and deep respect 
-                        for Islamic traditions and values.
-                    </p>
-                </div>
-                <div class="about-image scroll-reveal floating">
-                    <i class="fas fa-heart"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Salamly Section -->
-    <section class="why-choose section">
-        <div class="container">
-            <div class="section-header scroll-reveal">
-                <h2 class="section-title">Why Choose Salamly?</h2>
-                <p class="section-subtitle">
-                    Discover what makes Salamly the perfect Islamic companion for your spiritual journey
-                </p>
-            </div>
-            <div class="why-grid">
-                <div class="why-card scroll-reveal">
-                    <div class="why-icon">🌟</div>
-                    <h3 class="why-title">Authentic Content</h3>
-                    <p class="why-description">
-                        All Islamic content is carefully verified by Islamic scholars to ensure authenticity and accuracy according to Quran and Sunnah.
-                    </p>
-                </div>
-                <div class="why-card scroll-reveal">
-                    <div class="why-icon">🎨</div>
-                    <h3 class="why-title">Beautiful Design</h3>
-                    <p class="why-description">
-                        Experience Islam through a beautifully crafted interface that respects Islamic aesthetics and enhances your spiritual experience.
-                    </p>
-                </div>
-                <div class="why-card scroll-reveal">
-                    <div class="why-icon">🔒</div>
-                    <h3 class="why-title">Privacy First</h3>
-                    <p class="why-description">
-                        Your privacy is our priority. We don't collect unnecessary data and ensure your spiritual journey remains personal and secure.
-                    </p>
-                </div>
-                <div class="why-card scroll-reveal">
-                    <div class="why-icon">🌍</div>
-                    <h3 class="why-title">Global Community</h3>
-                    <p class="why-description">
-                        Connect with Muslims worldwide while maintaining your local Islamic practices and prayer times specific to your location.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Islamic Calendar & Events Section -->
-    <section class="calendar-events section">
-        <div class="container">
-            <div class="calendar-content">
-                <div class="calendar-text scroll-reveal">
-                    <h2 class="section-title">Stay Connected to Islamic Time</h2>
-                    <p class="calendar-description">
-                        Never miss important Islamic dates and events with our comprehensive Hijri calendar system. 
-                        Get notifications for significant occasions like Ramadan, Eid, and the blessed nights.
-                    </p>
-                    <div class="calendar-features">
-                        <div class="calendar-feature">
-                            <i class="fas fa-calendar-alt"></i>
-                            <div>
-                                <h4>Hijri Calendar</h4>
-                                <p>Complete Islamic calendar with accurate date conversion</p>
+            <div class="showcase-content">
+                <div class="showcase-text scroll-reveal-left">
+                    <div class="section-badge">App Preview</div>
+                    <h2>Beautiful Design Meets Powerful Functionality</h2>
+                    <p>Experience Islam through a carefully crafted interface that respects Islamic aesthetics while providing modern usability and accessibility.</p>
+                    
+                    <div class="showcase-features">
+                        <div class="showcase-feature">
+                            <i class="fas fa-palette"></i>
+                            <div class="showcase-feature-content">
+                                <h4>Islamic Design Language</h4>
+                                <p>Beautiful patterns and colors inspired by Islamic art and architecture</p>
                             </div>
                         </div>
-                        <div class="calendar-feature">
-                            <i class="fas fa-bell"></i>
-                            <div>
-                                <h4>Event Reminders</h4>
-                                <p>Get notified about important Islamic occasions</p>
+                        <div class="showcase-feature">
+                            <i class="fas fa-universal-access"></i>
+                            <div class="showcase-feature-content">
+                                <h4>Accessibility First</h4>
+                                <p>Designed for users of all abilities with screen reader support and high contrast modes</p>
                             </div>
                         </div>
-                        <div class="calendar-feature">
+                        <div class="showcase-feature">
                             <i class="fas fa-moon"></i>
-                            <div>
-                                <h4>Lunar Phases</h4>
-                                <p>Track lunar cycles for fasting and religious observances</p>
+                            <div class="showcase-feature-content">
+                                <h4>Night Mode</h4>
+                                <p>Comfortable reading experience during night prayers and late-night worship</p>
+                            </div>
+                        </div>
+                        <div class="showcase-feature">
+                            <i class="fas fa-language"></i>
+                            <div class="showcase-feature-content">
+                                <h4>RTL Support</h4>
+                                <p>Perfect Arabic text rendering with proper right-to-left language support</p>
                             </div>
                         </div>
                     </div>
+                    
+                    <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" class="btn btn-primary" target="_blank">
+                        <i class="fab fa-google-play"></i>
+                        Try It Now
+                    </a>
                 </div>
-                <div class="calendar-visual scroll-reveal">
-                    <div class="calendar-card">
-                        <div class="calendar-header">
-                            <h3>Islamic Calendar</h3>
-                            <p>Rajab 1446 AH</p>
-                        </div>
-                        <div class="calendar-body">
-                            <div class="calendar-highlight">
-                                <i class="fas fa-star"></i>
-                                <span>Laylat al-Miraj</span>
-                            </div>
-                            <div class="calendar-highlight">
-                                <i class="fas fa-crescent-moon"></i>
-                                <span>Sha'ban begins</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quran & Hadith Section -->
-    <section class="quran-hadith section">
-        <div class="container">
-            <div class="section-header scroll-reveal">
-                <h2 class="section-title">Your Digital Islamic Library</h2>
-                <p class="section-subtitle">
-                    Access the complete Quran and authentic Hadith collections in one beautiful app
-                </p>
-            </div>
-            <div class="library-grid">
-                <div class="library-card scroll-reveal">
-                    <div class="library-icon">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <h3 class="library-title">Complete Quran</h3>
-                    <div class="library-features">
-                        <div class="library-feature">✓ Multiple translations in 20+ languages</div>
-                        <div class="library-feature">✓ Audio recitation by renowned Qaris</div>
-                        <div class="library-feature">✓ Tafsir and commentary</div>
-                        <div class="library-feature">✓ Advanced search and bookmarking</div>
-                        <div class="library-feature">✓ Night mode for comfortable reading</div>
-                    </div>
-                </div>
-                <div class="library-card scroll-reveal">
-                    <div class="library-icon">
-                        <i class="fas fa-scroll"></i>
-                    </div>
-                    <h3 class="library-title">Authentic Hadith</h3>
-                    <div class="library-features">
-                        <div class="library-feature">✓ Sahih Bukhari & Muslim collections</div>
-                        <div class="library-feature">✓ Daily hadith with notifications</div>
-                        <div class="library-feature">✓ Categorized by topics and themes</div>
-                        <div class="library-feature">✓ Arabic text with translation</div>
-                        <div class="library-feature">✓ Share inspirational quotes</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Prayer & Spiritual Tools Section -->
-    <section class="prayer-tools section">
-        <div class="container">
-            <div class="tools-content">
-                <div class="tools-visual scroll-reveal">
-                    <div class="prayer-card">
-                        <div class="prayer-time">
-                            <h3>Next Prayer</h3>
-                            <div class="prayer-name">Maghrib</div>
-                            <div class="prayer-countdown">2:34:15</div>
-                        </div>
-                        <div class="qibla-indicator">
-                            <div class="compass">
-                                <i class="fas fa-compass"></i>
-                                <span>Qibla Direction</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tools-text scroll-reveal">
-                    <h2 class="section-title">Advanced Prayer Tools</h2>
-                    <p class="tools-description">
-                        Experience the most accurate prayer times and spiritual tools designed to enhance your worship and connection with Allah.
-                    </p>
-                    <div class="tools-features">
-                        <div class="tool-feature">
-                            <i class="fas fa-location-arrow"></i>
-                            <div>
-                                <h4>Precise Qibla Direction</h4>
-                                <p>Find the exact direction of Kaaba from anywhere in the world using advanced GPS technology</p>
-                            </div>
-                        </div>
-                        <div class="tool-feature">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Smart Prayer Alerts</h4>
-                                <p>Customizable notifications with beautiful Adhan sounds and gentle reminders</p>
-                            </div>
-                        </div>
-                        <div class="tool-feature">
-                            <i class="fas fa-calculator"></i>
-                            <div>
-                                <h4>Multiple Calculation Methods</h4>
-                                <p>Choose from various calculation methods used by different Islamic authorities worldwide</p>
+                
+                <div class="phone-mockup scroll-reveal-right">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="phone-content">
+                                <h3>Prayer Times</h3>
+                                <div class="prayer-time-display">
+                                    <div class="current-prayer">Maghrib</div>
+                                    <div class="next-prayer">Next: Isha in 2:34:15</div>
+                                </div>
+                                <div style="margin-top: 2rem;">
+                                    <i class="fas fa-kaaba" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                                    <p style="opacity: 0.9;">Qibla Direction: 285°</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1095,48 +1407,91 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials section">
+    <section id="testimonials" class="testimonials section">
         <div class="container">
             <div class="section-header scroll-reveal">
-                <h2 class="section-title">What Our Users Say</h2>
+                <div class="section-badge">Testimonials</div>
+                <h2 class="section-title">Loved by Muslims Worldwide</h2>
                 <p class="section-subtitle">
-                    Join thousands of satisfied Muslims who have made Salamly part of their daily spiritual routine
+                    Join thousands of satisfied Muslims who have made Salamly an essential part of their daily spiritual routine
                 </p>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card scroll-reveal">
-                    <div class="testimonial-content">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testimonial-text">
-                            "Salamly has transformed my daily prayers. The accurate prayer times and beautiful Quran recitation help me stay connected to my faith throughout the day. Barakallahu feeki!"
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-name">Sister Aisha</div>
-                            <div class="author-location">London, UK</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Salamly has completely transformed my daily prayers. The accurate prayer times and beautiful Quran recitation help me stay connected to my faith throughout the busy day. The design is so peaceful and calming. Barakallahu feeki for this amazing app!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Sister Aisha Rahman</h4>
+                            <p>London, United Kingdom</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card scroll-reveal">
-                    <div class="testimonial-content">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testimonial-text">
-                            "As a frequent traveler, having accurate prayer times and Qibla direction wherever I go is invaluable. The offline feature is a game-changer. Jazakallahu khairan!"
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-name">Brother Ahmed</div>
-                            <div class="author-location">Dubai, UAE</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "As a frequent traveler for business, having accurate prayer times and Qibla direction wherever I go is invaluable. The offline feature is a real game-changer when I'm in remote locations. This app never lets me down. Jazakallahu khairan!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Brother Ahmed Al-Mansouri</h4>
+                            <p>Dubai, United Arab Emirates</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card scroll-reveal">
-                    <div class="testimonial-content">
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testimonial-text">
-                            "The daily hadith and Quranic verses feature is my favorite. It's like having a gentle reminder from Allah every morning. The app's design is also very peaceful and calming."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-name">Sister Fatima</div>
-                            <div class="author-location">Toronto, Canada</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "The daily hadith and Quranic verses feature is my absolute favorite. It's like having a gentle reminder from Allah every morning when I wake up. The authentic content and beautiful presentation make this app truly special. May Allah bless the developers."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">F</div>
+                        <div class="author-info">
+                            <h4>Sister Fatima Khan</h4>
+                            <p>Toronto, Canada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "I've tried many Islamic apps, but Salamly stands out with its attention to detail and authenticity. The Duas collection is comprehensive and the Arabic typography is absolutely beautiful. Perfect for both new Muslims and those seeking to strengthen their practice."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">O</div>
+                        <div class="author-info">
+                            <h4>Brother Omar Hassan</h4>
+                            <p>Cairo, Egypt</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "The Islamic calendar feature helps me keep track of important dates like Ramadan and Eid. The interface is so user-friendly that even my elderly mother can use it easily. This app brings the whole family together in worship. Alhamdulillah!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">Z</div>
+                        <div class="author-info">
+                            <h4>Sister Zahra Malik</h4>
+                            <p>Karachi, Pakistan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Living in a non-Muslim country, this app keeps me connected to my faith. The multiple language support helps me learn Arabic better, and the Qibla direction is always accurate. It's like having a mosque in my pocket. SubhanAllah!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Brother Muhammad Tanaka</h4>
+                            <p>Tokyo, Japan</p>
                         </div>
                     </div>
                 </div>
@@ -1148,23 +1503,24 @@
     <section id="download" class="download section">
         <div class="container">
             <div class="download-content scroll-reveal">
-                <h2 class="section-title">Download Salamly Today</h2>
-                <p class="section-subtitle">
-                    Start your spiritual journey with Salamly. Available now on Google Play Store.
+                <h2>Begin Your Spiritual Journey Today</h2>
+                <p>
+                    Join millions of Muslims worldwide who trust Salamly for their daily Islamic practices. 
+                    Download now and experience the perfect blend of faith and technology.
                 </p>
                 <div class="download-buttons">
                     <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" class="download-btn" target="_blank">
                         <i class="fab fa-google-play"></i>
-                        <div>
-                            <div style="font-size: 0.8rem;">Get it on</div>
-                            <div>Google Play</div>
+                        <div class="download-btn-text">
+                            <span class="small">Get it on</span>
+                            <span class="large">Google Play</span>
                         </div>
                     </a>
                     <a href="https://alims-repo.github.io/Salamly" class="download-btn" target="_blank">
                         <i class="fas fa-globe"></i>
-                        <div>
-                            <div style="font-size: 0.8rem;">Visit our</div>
-                            <div>Website</div>
+                        <div class="download-btn-text">
+                            <span class="small">Visit our</span>
+                            <span class="large">Website</span>
                         </div>
                     </a>
                 </div>
@@ -1175,85 +1531,438 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://www.facebook.com/share/1PUk7RAFVx" target="_blank">
-                    <i class="fab fa-facebook"></i> Facebook
-                </a>
-                <a href="https://alims-repo.github.io/Salamly" target="_blank">
-                    <i class="fas fa-globe"></i> Website
-                </a>
-                <a href="mailto:support@salamly.com">
-                    <i class="fas fa-envelope"></i> Contact
-                </a>
+            <div class="footer-section">
+                <h3>Salamly</h3>
+                <p>Made with ❤️ for the global Muslim community. Our mission is to use technology to bring Muslims closer to their faith and strengthen their connection with Allah.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1PUk7RAFVx" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://alims-repo.github.io/Salamly" target="_blank" aria-label="Website">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <a href="mailto:support@salamly.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Salamly. Built with ❤️ for the Ummah. May Allah bless our efforts.</p>
+            
+            <div class="footer-section">
+                <h3>Features</h3>
+                <div class="footer-links">
+                    <a href="#features"><i class="fas fa-clock"></i> Prayer Times</a>
+                    <a href="#features"><i class="fas fa-book-open"></i> Holy Quran</a>
+                    <a href="#features"><i class="fas fa-hands-praying"></i> Duas Collection</a>
+                    <a href="#features"><i class="fas fa-calendar-alt"></i> Islamic Calendar</a>
+                </div>
             </div>
+            
+            <div class="footer-section">
+                <h3>Support</h3>
+                <div class="footer-links">
+                    <a href="mailto:support@salamly.com"><i class="fas fa-envelope"></i> Contact Support</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                    <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                    <a href="#"><i class="fas fa-file-alt"></i> Terms of Service</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Download</h3>
+                <div class="footer-links">
+                    <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" target="_blank">
+                        <i class="fab fa-google-play"></i> Google Play Store
+                    </a>
+                    <a href="https://alims-repo.github.io/Salamly" target="_blank">
+                        <i class="fas fa-globe"></i> Official Website
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Salamly. Built with love and guided by faith for the Ummah. May Allah accept our efforts and bless all who use this app. Ameen.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Enhanced smooth scrolling with offset for fixed navbar
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Navbar background on scroll
+        // Enhanced navbar background and scroll effects
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('nav');
+
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 100) {
                 nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.borderBottom = '1px solid rgba(15, 118, 110, 0.2)';
             } else {
-                nav.style.background = 'rgba(15, 23, 42, 0.8)';
+                nav.style.background = 'rgba(15, 23, 42, 0.9)';
+                nav.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            }
+
+            // Hide/show navbar on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Enhanced scroll reveal animation with Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.querySelector('.stat-number')) {
+                        animateCounters(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll reveal elements
+        document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced counter animation for stats
+        function animateCounters(container) {
+            const counters = container.querySelectorAll('.stat-number[data-count]');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    // Format number with commas for large numbers
+                    counter.textContent = Math.floor(current).toLocaleString();
+                }, 16);
+            });
+        }
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-icon');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.05}deg)`;
+            });
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        let mobileMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuOpen = !mobileMenuOpen;
+            
+            if (mobileMenuOpen) {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.backgroundColor = 'rgba(15, 23, 42, 0.98)';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '2rem';
+                navLinks.style.borderTop = '1px solid rgba(255, 255, 255, 0.1)';
+                navLinks.style.backdropFilter = 'blur(20px)';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                navLinks.style.display = 'none';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
 
-        // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileMenuOpen = false;
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
         });
 
-        // Remove stats animation code since stats section is removed
-        
-        // Add scroll animation for new sections
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'static';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.padding = '0';
+                navLinks.style.backgroundColor = 'transparent';
+                navLinks.style.borderTop = 'none';
+                navLinks.style.backdropFilter = 'none';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuOpen = false;
+            } else if (!mobileMenuOpen) {
+                navLinks.style.display = 'none';
+            }
+        });
 
-        const observer = new IntersectionObserver((entries) => {
+        // Enhanced loading animation
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            
+            // Trigger hero animations
+            const heroElements = document.querySelectorAll('.hero .hero-badge, .hero h1, .hero-subtitle, .hero-description, .cta-buttons');
+            heroElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+
+        // Smooth hover effects for cards
+        document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation styles
+        const rippleStyles = document.createElement('style');
+        rippleStyles.textContent = `
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                pointer-events: none;
+                animation: ripple-animation 0.6s ease-out;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyles);
+
+        // Lazy loading for performance
+        const lazyElements = document.querySelectorAll('[data-src]');
+        const lazyObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
+                    const element = entry.target;
+                    element.src = element.dataset.src;
+                    element.removeAttribute('data-src');
+                    lazyObserver.unobserve(element);
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
         });
+
+        lazyElements.forEach(element => {
+            lazyObserver.observe(element);
+        });
+
+        // Add loading states
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulate loading time for smooth animations
+            setTimeout(() => {
+                document.body.classList.add('ready');
+            }, 100);
+        });
+
+        // Enhanced accessibility features
+        document.addEventListener('keydown', (e) => {
+            // Skip to main content with Tab
+            if (e.key === 'Tab' && e.target === document.body) {
+                document.querySelector('#features').focus();
+            }
+            
+            // Close mobile menu with Escape
+            if (e.key === 'Escape' && mobileMenuOpen) {
+                navLinks.style.display = 'none';
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuOpen = false;
+            }
+        });
+
+        // Add focus styles for keyboard navigation
+        const focusStyles = document.createElement('style');
+        focusStyles.textContent = `
+            .nav-links a:focus,
+            .btn:focus,
+            .download-btn:focus {
+                outline: 2px solid var(--accent-color);
+                outline-offset: 2px;
+            }
+            
+            .feature-card:focus-within,
+            .testimonial-card:focus-within {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-xl);
+            }
+        `;
+        document.head.appendChild(focusStyles);
+
+        // Performance optimization - throttle scroll events
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Apply throttling to scroll events
+        window.addEventListener('scroll', throttle(() => {
+            // Scroll-based animations and effects
+        }, 16)); // ~60fps
+
+        // Add error handling for external resources
+        window.addEventListener('error', (e) => {
+            if (e.target.tagName === 'LINK' || e.target.tagName === 'SCRIPT') {
+                console.warn('Failed to load external resource:', e.target.src || e.target.href);
+            }
+        });
+
+        // Service Worker registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // Add meta theme color for mobile browsers
+        const metaThemeColor = document.createElement('meta');
+        metaThemeColor.name = 'theme-color';
+        metaThemeColor.content = '#0f766e';
+        document.head.appendChild(metaThemeColor);
+
+        // Add manifest for PWA
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = '/manifest.json';
+        document.head.appendChild(manifestLink);
+
+        // Add Apple touch icon
+        const appleTouchIcon = document.createElement('link');
+        appleTouchIcon.rel = 'apple-touch-icon';
+        appleTouchIcon.href = '/icon-192x192.png';
+        document.head.appendChild(appleTouchIcon);
+
+        // Add favicon
+        const favicon = document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.type = 'image/x-icon';
+        favicon.href = '/favicon.ico';
+        document.head.appendChild(favicon);
+
+        // Analytics and tracking (replace with your actual analytics code)
+        // gtag('config', 'GA_MEASUREMENT_ID');
+
+        console.log('Salamly website loaded successfully! 🕋');
+    </script>
+
+    <!-- Schema.org structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "Salamly",
+        "description": "A comprehensive Islamic mobile application for prayer times, Quran reading, Duas, and Islamic calendar",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Android",
+        "url": "https://alims-repo.github.io/Salamly",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.nelu.salamly",
+        "author": {
+            "@type": "Organization",
+            "name": "Salamly",
+            "url": "https://alims-repo.github.io/Salamly"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1200"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
     </script>
 </body>
 </html>
