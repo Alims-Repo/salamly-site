@@ -29,14 +29,11 @@
             --text-secondary: #64748b;
             --text-light: #94a3b8;
             --white: #ffffff;
-            --success: #10b981;
-            --error: #ef4444;
             
             /* Gradients */
             --gradient-primary: linear-gradient(135deg, #0f766e 0%, #059669 100%);
             --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
             
             /* Shadows */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -44,7 +41,6 @@
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            --shadow-glow: 0 0 0 1px rgba(15, 118, 110, 0.05), 0 1px 3px 0 rgba(15, 118, 110, 0.1), 0 4px 6px 0 rgba(15, 118, 110, 0.1);
             
             /* Border radius */
             --radius-sm: 0.375rem;
@@ -73,22 +69,13 @@
             background: var(--white);
         }
 
-        /* Modern Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--light-bg);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-primary);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+        /* Ensure content is visible by default - remove problematic opacity animations */
+        .scroll-reveal,
+        .scroll-reveal-left,
+        .scroll-reveal-right {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: all 0.6s ease;
         }
 
         /* Navigation */
@@ -96,11 +83,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -136,36 +123,18 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             padding: 0.75rem 1.25rem;
             border-radius: var(--radius-lg);
             position: relative;
-            overflow: hidden;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: inherit;
-        }
-
-        .nav-links a:hover::before {
-            opacity: 0.1;
         }
 
         .nav-links a:hover {
-            transform: translateY(-2px);
             color: var(--accent-light);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
 
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -175,11 +144,6 @@
             cursor: pointer;
             padding: 0.5rem;
             border-radius: var(--radius-md);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Hero Section */
@@ -210,16 +174,6 @@
             opacity: 0.6;
         }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-        }
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -239,7 +193,6 @@
             font-size: 0.9rem;
             font-weight: 500;
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 {
@@ -253,7 +206,6 @@
             background-clip: text;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .hero-subtitle {
@@ -261,7 +213,6 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             font-weight: 500;
-            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         .hero-description {
@@ -272,7 +223,6 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
-            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .cta-buttons {
@@ -280,7 +230,6 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.8s both;
         }
 
         .btn {
@@ -292,7 +241,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
@@ -300,64 +249,20 @@
             cursor: pointer;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: var(--shadow-glow);
         }
 
         .btn-secondary {
             background: white;
             color: var(--text-primary);
-            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: var(--shadow-2xl);
         }
-
-        .btn-primary:hover {
-            box-shadow: 0 25px 50px -12px rgba(15, 118, 110, 0.4);
-        }
-
-        /* Floating Elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floating-icon {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 2rem;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-icon:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-        .floating-icon:nth-child(2) { top: 60%; right: 15%; animation-delay: 2s; }
-        .floating-icon:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 4s; }
-        .floating-icon:nth-child(4) { top: 40%; right: 30%; animation-delay: 1s; }
 
         /* Section Styles */
         .section {
@@ -407,88 +312,6 @@
             line-height: 1.6;
         }
 
-        /* Features Section */
-        .features {
-            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 3rem;
-            border-radius: var(--radius-3xl);
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(15, 118, 110, 0.1);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
-        }
-
-        .feature-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(15, 118, 110, 0.03) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .feature-card:hover::after {
-            opacity: 1;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow-2xl);
-            border-color: rgba(15, 118, 110, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            display: block;
-            filter: drop-shadow(0 4px 8px rgba(15, 118, 110, 0.2));
-            position: relative;
-            z-index: 2;
-        }
-
-        .feature-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            position: relative;
-            z-index: 2;
-        }
-
-        .feature-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 2;
-        }
-
         /* Stats Section */
         .stats {
             background: var(--gradient-primary);
@@ -496,16 +319,6 @@
             padding: 6rem 2rem;
             position: relative;
             overflow: hidden;
-        }
-
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
         }
 
         .stats-grid {
@@ -545,6 +358,66 @@
             font-size: 1.2rem;
             font-weight: 500;
             opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-3xl);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(15, 118, 110, 0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+            border-color: rgba(15, 118, 110, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(15, 118, 110, 0.2));
+        }
+
+        .feature-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         /* App Showcase Section */
@@ -664,21 +537,6 @@
             overflow: hidden;
         }
 
-        .phone-screen::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 0 L20 10 L10 20 L0 10 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic)"/></svg>');
-        }
-
-        .phone-content {
-            position: relative;
-            z-index: 2;
-        }
-
         .phone-content h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
@@ -710,16 +568,6 @@
             overflow: hidden;
         }
 
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(15, 118, 110, 0.05) 0%, transparent 50%);
-        }
-
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -733,7 +581,7 @@
             padding: 3rem;
             border-radius: var(--radius-3xl);
             box-shadow: var(--shadow-md);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(15, 118, 110, 0.1);
@@ -870,25 +718,8 @@
             text-decoration: none;
             border-radius: var(--radius-2xl);
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .download-btn:hover::before {
-            left: 100%;
         }
 
         .download-btn:hover {
@@ -1004,7 +835,7 @@
             margin: 0 auto;
         }
 
-        /* Animations */
+        /* Enhanced animations that work properly */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1018,21 +849,10 @@
 
         @keyframes float {
             0%, 100% { 
-                transform: translateY(0) rotate(0deg); 
+                transform: translateY(0); 
             }
             50% { 
-                transform: translateY(-20px) rotate(5deg); 
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { 
-                transform: scale(1); 
-                opacity: 1; 
-            }
-            50% { 
-                transform: scale(1.05); 
-                opacity: 0.9; 
+                transform: translateY(-10px); 
             }
         }
 
@@ -1040,42 +860,16 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        .pulse {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        /* Scroll animations */
-        .scroll-reveal {
+        /* Show content immediately and add smooth reveals on scroll */
+        .scroll-reveal.animate {
             opacity: 0;
             transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.8s ease;
         }
 
-        .scroll-reveal.revealed {
+        .scroll-reveal.animate.revealed {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        .scroll-reveal-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-reveal-left.revealed {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .scroll-reveal-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-reveal-right.revealed {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         /* Responsive Design */
@@ -1094,6 +888,19 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(20px);
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .mobile-menu-btn {
@@ -1167,39 +974,6 @@
                 justify-content: center;
             }
         }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --light-bg: #1e293b;
-                --white: #0f172a;
-                --text-primary: #f1f5f9;
-                --text-secondary: #cbd5e1;
-            }
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* High contrast mode */
-        @media (prefers-contrast: high) {
-            .btn {
-                border: 2px solid currentColor;
-            }
-            
-            .feature-card,
-            .testimonial-card {
-                border: 2px solid var(--primary-color);
-            }
-        }
     </style>
 </head>
 <body>
@@ -1214,7 +988,7 @@
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -1222,12 +996,6 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="floating-elements">
-            <div class="floating-icon"><i class="fas fa-mosque"></i></div>
-            <div class="floating-icon"><i class="fas fa-star-and-crescent"></i></div>
-            <div class="floating-icon"><i class="fas fa-book-open"></i></div>
-            <div class="floating-icon"><i class="fas fa-hands-praying"></i></div>
-        </div>
         <div class="hero-content">
             <div class="hero-badge">
                 <i class="fas fa-sparkles"></i>
@@ -1255,21 +1023,21 @@
     <!-- Stats Section -->
     <section class="stats">
         <div class="container">
-            <div class="stats-grid scroll-reveal">
+            <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number" data-count="50000">0</div>
+                    <div class="stat-number">50K+</div>
                     <div class="stat-label">Happy Users</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-number">100+</div>
                     <div class="stat-label">Countries</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" data-count="25">0</div>
+                    <div class="stat-number">25+</div>
                     <div class="stat-label">Languages</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number" data-count="1000000">0</div>
+                    <div class="stat-number">1M+</div>
                     <div class="stat-label">Prayers Tracked</div>
                 </div>
             </div>
@@ -1279,7 +1047,7 @@
     <!-- Features Section -->
     <section id="features" class="features section">
         <div class="container">
-            <div class="section-header scroll-reveal">
+            <div class="section-header">
                 <div class="section-badge">Features</div>
                 <h2 class="section-title">Everything You Need for Your Spiritual Journey</h2>
                 <p class="section-subtitle">
@@ -1287,7 +1055,7 @@
                 </p>
             </div>
             <div class="features-grid">
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card">
                     <div class="feature-icon">🕋</div>
                     <h3 class="feature-title">Accurate Prayer Times</h3>
                     <p class="feature-description">
@@ -1295,7 +1063,7 @@
                         beautiful notifications, and accurate Qibla direction using advanced GPS technology.
                     </p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card">
                     <div class="feature-icon">📖</div>
                     <h3 class="feature-title">Complete Holy Quran</h3>
                     <p class="feature-description">
@@ -1303,15 +1071,14 @@
                         audio recitation by world-renowned Qaris, advanced search, and smart bookmarking.
                     </p>
                 </div>
-                <div class="feature-card scroll-reveal">
-                    <div class="feature-icon">📜</div>
-                    <h3 class="feature-title">Daily Hadith & Ayah</h3>
+                <div class="feature-card">
+                    <div class="feature-title">Daily Hadith & Ayah</h3>
                     <p class="feature-description">
                         Start each day with carefully curated Hadiths and Quranic verses, 
                         featuring authentic narrations from Sahih collections to inspire and guide your day.
                     </p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card">
                     <div class="feature-icon">🤲</div>
                     <h3 class="feature-title">Comprehensive Duas</h3>
                     <p class="feature-description">
@@ -1319,7 +1086,7 @@
                         categorized intelligently with Arabic text, transliteration, and translations.
                     </p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card">
                     <div class="feature-icon">📅</div>
                     <h3 class="feature-title">Islamic Calendar & Events</h3>
                     <p class="feature-description">
@@ -1327,7 +1094,7 @@
                         with smart notifications for Ramadan, Eid, and blessed nights.
                     </p>
                 </div>
-                <div class="feature-card scroll-reveal">
+                <div class="feature-card">
                     <div class="feature-icon">📶</div>
                     <h3 class="feature-title">Offline Access</h3>
                     <p class="feature-description">
@@ -1343,7 +1110,7 @@
     <section id="showcase" class="app-showcase section">
         <div class="container">
             <div class="showcase-content">
-                <div class="showcase-text scroll-reveal-left">
+                <div class="showcase-text">
                     <div class="section-badge">App Preview</div>
                     <h2>Beautiful Design Meets Powerful Functionality</h2>
                     <p>Experience Islam through a carefully crafted interface that respects Islamic aesthetics while providing modern usability and accessibility.</p>
@@ -1385,7 +1152,7 @@
                     </a>
                 </div>
                 
-                <div class="phone-mockup scroll-reveal-right">
+                <div class="phone-mockup">
                     <div class="phone-frame">
                         <div class="phone-screen">
                             <div class="phone-content">
@@ -1409,7 +1176,7 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section">
         <div class="container">
-            <div class="section-header scroll-reveal">
+            <div class="section-header">
                 <div class="section-badge">Testimonials</div>
                 <h2 class="section-title">Loved by Muslims Worldwide</h2>
                 <p class="section-subtitle">
@@ -1417,10 +1184,10 @@
                 </p>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card scroll-reveal">
+                <div class="testimonial-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">
-                        "Salamly has completely transformed my daily prayers. The accurate prayer times and beautiful Quran recitation help me stay connected to my faith throughout the busy day. The design is so peaceful and calming. Barakallahu feeki for this amazing app!"
+                        "Salamly has completely transformed my daily prayers. The accurate prayer times and beautiful Quran recitation help me stay connected to my faith throughout the busy day. Barakallahu feeki!"
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">A</div>
@@ -1430,10 +1197,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card scroll-reveal">
+                <div class="testimonial-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">
-                        "As a frequent traveler for business, having accurate prayer times and Qibla direction wherever I go is invaluable. The offline feature is a real game-changer when I'm in remote locations. This app never lets me down. Jazakallahu khairan!"
+                        "As a frequent traveler for business, having accurate prayer times and Qibla direction wherever I go is invaluable. The offline feature is a real game-changer. Jazakallahu khairan!"
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">A</div>
@@ -1443,55 +1210,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card scroll-reveal">
+                <div class="testimonial-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">
-                        "The daily hadith and Quranic verses feature is my absolute favorite. It's like having a gentle reminder from Allah every morning when I wake up. The authentic content and beautiful presentation make this app truly special. May Allah bless the developers."
+                        "The daily hadith and Quranic verses feature is my absolute favorite. It's like having a gentle reminder from Allah every morning. May Allah bless the developers."
                     </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">F</div>
                         <div class="author-info">
                             <h4>Sister Fatima Khan</h4>
                             <p>Toronto, Canada</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card scroll-reveal">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "I've tried many Islamic apps, but Salamly stands out with its attention to detail and authenticity. The Duas collection is comprehensive and the Arabic typography is absolutely beautiful. Perfect for both new Muslims and those seeking to strengthen their practice."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">O</div>
-                        <div class="author-info">
-                            <h4>Brother Omar Hassan</h4>
-                            <p>Cairo, Egypt</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card scroll-reveal">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "The Islamic calendar feature helps me keep track of important dates like Ramadan and Eid. The interface is so user-friendly that even my elderly mother can use it easily. This app brings the whole family together in worship. Alhamdulillah!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">Z</div>
-                        <div class="author-info">
-                            <h4>Sister Zahra Malik</h4>
-                            <p>Karachi, Pakistan</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card scroll-reveal">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Living in a non-Muslim country, this app keeps me connected to my faith. The multiple language support helps me learn Arabic better, and the Qibla direction is always accurate. It's like having a mosque in my pocket. SubhanAllah!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
-                        <div class="author-info">
-                            <h4>Brother Muhammad Tanaka</h4>
-                            <p>Tokyo, Japan</p>
                         </div>
                     </div>
                 </div>
@@ -1502,7 +1230,7 @@
     <!-- Download Section -->
     <section id="download" class="download section">
         <div class="container">
-            <div class="download-content scroll-reveal">
+            <div class="download-content">
                 <h2>Begin Your Spiritual Journey Today</h2>
                 <p>
                     Join millions of Muslims worldwide who trust Salamly for their daily Islamic practices. 
@@ -1586,7 +1314,17 @@
     </footer>
 
     <script>
-        // Enhanced smooth scrolling with offset for fixed navbar
+        // Ensure all content is visible immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove any problematic opacity or transform styles
+            const elements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right');
+            elements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        });
+
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1601,113 +1339,19 @@
             });
         });
 
-        // Enhanced navbar background and scroll effects
-        let lastScrollY = window.scrollY;
-        const nav = document.querySelector('nav');
-
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY > 100) {
-                nav.style.background = 'rgba(15, 23, 42, 0.95)';
-                nav.style.borderBottom = '1px solid rgba(15, 118, 110, 0.2)';
-            } else {
-                nav.style.background = 'rgba(15, 23, 42, 0.9)';
-                nav.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-            }
-
-            // Hide/show navbar on scroll
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-            
-            lastScrollY = currentScrollY;
-        });
-
-        // Enhanced scroll reveal animation with Intersection Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    
-                    // Trigger counter animation for stats
-                    if (entry.target.querySelector('.stat-number')) {
-                        animateCounters(entry.target);
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // Observe all scroll reveal elements
-        document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Enhanced counter animation for stats
-        function animateCounters(container) {
-            const counters = container.querySelectorAll('.stat-number[data-count]');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000; // 2 seconds
-                const step = target / (duration / 16); // 60fps
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    
-                    // Format number with commas for large numbers
-                    counter.textContent = Math.floor(current).toLocaleString();
-                }, 16);
-            });
-        }
-
-        // Parallax effect for floating elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.floating-icon');
-            
-            parallaxElements.forEach((element, index) => {
-                const speed = 0.5 + (index * 0.1);
-                const yPos = -(scrolled * speed);
-                element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.05}deg)`;
-            });
-        });
-
         // Mobile menu functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         let mobileMenuOpen = false;
 
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', function() {
             mobileMenuOpen = !mobileMenuOpen;
+            navLinks.classList.toggle('active');
             
             if (mobileMenuOpen) {
-                navLinks.style.display = 'flex';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.backgroundColor = 'rgba(15, 23, 42, 0.98)';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.padding = '2rem';
-                navLinks.style.borderTop = '1px solid rgba(255, 255, 255, 0.1)';
-                navLinks.style.backdropFilter = 'blur(20px)';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                this.innerHTML = '<i class="fas fa-times"></i>';
             } else {
-                navLinks.style.display = 'none';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                this.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
 
@@ -1715,45 +1359,35 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
+                    navLinks.classList.remove('active');
                     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                     mobileMenuOpen = false;
                 }
             });
         });
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                navLinks.style.display = 'flex';
-                navLinks.style.position = 'static';
-                navLinks.style.flexDirection = 'row';
-                navLinks.style.padding = '0';
-                navLinks.style.backgroundColor = 'transparent';
-                navLinks.style.borderTop = 'none';
-                navLinks.style.backdropFilter = 'none';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                mobileMenuOpen = false;
-            } else if (!mobileMenuOpen) {
-                navLinks.style.display = 'none';
-            }
-        });
+        // Enhanced navbar background on scroll
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('nav');
 
-        // Enhanced loading animation
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
             
-            // Trigger hero animations
-            const heroElements = document.querySelectorAll('.hero .hero-badge, .hero h1, .hero-subtitle, .hero-description, .cta-buttons');
-            heroElements.forEach((element, index) => {
-                element.style.animationDelay = `${index * 0.2}s`;
-            });
+            if (currentScrollY > 100) {
+                nav.style.background = 'rgba(15, 23, 42, 0.98)';
+                nav.style.borderBottom = '1px solid rgba(15, 118, 110, 0.2)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            }
+
+            lastScrollY = currentScrollY;
         });
 
-        // Smooth hover effects for cards
+        // Add smooth hover effects
         document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
+                this.style.transform = 'translateY(-10px) scale(1.02)';
             });
             
             card.addEventListener('mouseleave', function() {
@@ -1761,208 +1395,27 @@
             });
         });
 
-        // Add ripple effect to buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
+        // Optional: Add scroll-based reveal animations (but ensure content shows by default)
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
 
-        // Add ripple animation styles
-        const rippleStyles = document.createElement('style');
-        rippleStyles.textContent = `
-            .btn {
-                position: relative;
-                overflow: hidden;
-            }
-            
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.3);
-                pointer-events: none;
-                animation: ripple-animation 0.6s ease-out;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(rippleStyles);
-
-        // Lazy loading for performance
-        const lazyElements = document.querySelectorAll('[data-src]');
-        const lazyObserver = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const element = entry.target;
-                    element.src = element.dataset.src;
-                    element.removeAttribute('data-src');
-                    lazyObserver.unobserve(element);
+                    entry.target.classList.add('animate');
+                    // Add any additional animations here
                 }
             });
+        }, observerOptions);
+
+        // Only observe elements that should have scroll animations
+        document.querySelectorAll('.feature-card, .testimonial-card').forEach(el => {
+            observer.observe(el);
         });
 
-        lazyElements.forEach(element => {
-            lazyObserver.observe(element);
-        });
-
-        // Add loading states
-        document.addEventListener('DOMContentLoaded', () => {
-            // Simulate loading time for smooth animations
-            setTimeout(() => {
-                document.body.classList.add('ready');
-            }, 100);
-        });
-
-        // Enhanced accessibility features
-        document.addEventListener('keydown', (e) => {
-            // Skip to main content with Tab
-            if (e.key === 'Tab' && e.target === document.body) {
-                document.querySelector('#features').focus();
-            }
-            
-            // Close mobile menu with Escape
-            if (e.key === 'Escape' && mobileMenuOpen) {
-                navLinks.style.display = 'none';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                mobileMenuOpen = false;
-            }
-        });
-
-        // Add focus styles for keyboard navigation
-        const focusStyles = document.createElement('style');
-        focusStyles.textContent = `
-            .nav-links a:focus,
-            .btn:focus,
-            .download-btn:focus {
-                outline: 2px solid var(--accent-color);
-                outline-offset: 2px;
-            }
-            
-            .feature-card:focus-within,
-            .testimonial-card:focus-within {
-                transform: translateY(-5px);
-                box-shadow: var(--shadow-xl);
-            }
-        `;
-        document.head.appendChild(focusStyles);
-
-        // Performance optimization - throttle scroll events
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        }
-
-        // Apply throttling to scroll events
-        window.addEventListener('scroll', throttle(() => {
-            // Scroll-based animations and effects
-        }, 16)); // ~60fps
-
-        // Add error handling for external resources
-        window.addEventListener('error', (e) => {
-            if (e.target.tagName === 'LINK' || e.target.tagName === 'SCRIPT') {
-                console.warn('Failed to load external resource:', e.target.src || e.target.href);
-            }
-        });
-
-        // Service Worker registration for PWA capabilities
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
-
-        // Add meta theme color for mobile browsers
-        const metaThemeColor = document.createElement('meta');
-        metaThemeColor.name = 'theme-color';
-        metaThemeColor.content = '#0f766e';
-        document.head.appendChild(metaThemeColor);
-
-        // Add manifest for PWA
-        const manifestLink = document.createElement('link');
-        manifestLink.rel = 'manifest';
-        manifestLink.href = '/manifest.json';
-        document.head.appendChild(manifestLink);
-
-        // Add Apple touch icon
-        const appleTouchIcon = document.createElement('link');
-        appleTouchIcon.rel = 'apple-touch-icon';
-        appleTouchIcon.href = '/icon-192x192.png';
-        document.head.appendChild(appleTouchIcon);
-
-        // Add favicon
-        const favicon = document.createElement('link');
-        favicon.rel = 'icon';
-        favicon.type = 'image/x-icon';
-        favicon.href = '/favicon.ico';
-        document.head.appendChild(favicon);
-
-        // Analytics and tracking (replace with your actual analytics code)
-        // gtag('config', 'GA_MEASUREMENT_ID');
-
-        console.log('Salamly website loaded successfully! 🕋');
-    </script>
-
-    <!-- Schema.org structured data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "Salamly",
-        "description": "A comprehensive Islamic mobile application for prayer times, Quran reading, Duas, and Islamic calendar",
-        "applicationCategory": "LifestyleApplication",
-        "operatingSystem": "Android",
-        "url": "https://alims-repo.github.io/Salamly",
-        "downloadUrl": "https://play.google.com/store/apps/details?id=com.nelu.salamly",
-        "author": {
-            "@type": "Organization",
-            "name": "Salamly",
-            "url": "https://alims-repo.github.io/Salamly"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "1200"
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
-    }
+        console.log('Salamly website loaded successfully! 🕋 All content should be visible.');
     </script>
 </body>
 </html>
