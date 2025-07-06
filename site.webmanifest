@@ -1,0 +1,67 @@
+{
+    "name": "Salamly - Your Daily Islamic Companion",
+    "short_name": "Salamly",
+    "description": "A beautiful Islamic app made with love, guided by faith. Your comprehensive companion for prayer times, Holy Quran, duas, and Islamic calendar.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#0f766e",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "dir": "ltr",
+    "categories": ["lifestyle", "education", "religion"],
+    "icons": [
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-32x32.png", 
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Prayer Times",
+            "short_name": "Prayer",
+            "description": "Check current prayer times",
+            "url": "/#features",
+            "icons": [
+                {
+                    "src": "/favicon-32x32.png",
+                    "sizes": "32x32"
+                }
+            ]
+        },
+        {
+            "name": "Download App",
+            "short_name": "Download",
+            "description": "Download Salamly mobile app",
+            "url": "/#download",
+            "icons": [
+                {
+                    "src": "/favicon-32x32.png",
+                    "sizes": "32x32"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/og-image.jpg",
+            "sizes": "1200x630",
+            "type": "image/jpeg",
+            "platform": "wide",
+            "label": "Salamly App Features"
+        }
+    ]
+}
