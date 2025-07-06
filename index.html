@@ -123,6 +123,7 @@
     
     <style>
         :root {
+            /* Light mode colors */
             --primary-color: #0f766e;
             --primary-dark: #0d5e54;
             --secondary-color: #059669;
@@ -158,6 +159,35 @@
             --radius-3xl: 2rem;
         }
 
+        /* Dark mode colors */
+        [data-theme="dark"] {
+            --primary-color: #14b8a6;
+            --primary-dark: #0f766e;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --accent-light: #fbbf24;
+            --dark-bg: #0f172a;
+            --dark-secondary: #1e293b;
+            --light-bg: #1e293b;
+            --light-secondary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-light: #94a3b8;
+            --white: #0f172a;
+            
+            /* Dark mode gradients */
+            --gradient-primary: linear-gradient(135deg, #14b8a6 0%, #10b981 100%);
+            --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            
+            /* Dark mode shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -174,6 +204,7 @@
             color: var(--text-primary);
             overflow-x: hidden;
             background: var(--white);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Ensure content is visible by default - remove problematic opacity animations */
@@ -239,6 +270,28 @@
         .nav-links a:hover {
             color: var(--accent-light);
             background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
 
@@ -419,53 +472,7 @@
             line-height: 1.6;
         }
 
-        /* Stats Section */
-        .stats {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: var(--radius-2xl);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 1.2rem;
-            font-weight: 500;
-            opacity: 0.9;
-        }
 
         /* Features Section */
         .features {
@@ -668,97 +675,262 @@
             opacity: 0.8;
         }
 
-        /* Testimonials Section */
-        .testimonials {
-            background: var(--light-bg);
+
+
+        /* 99 Names of Allah Section */
+        .names-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
             position: relative;
             overflow: hidden;
         }
 
-        .testimonials-grid {
+        .names-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(15, 118, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            opacity: 0.7;
+        }
+
+        .names-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 4rem;
+        }
+
+        .name-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            text-align: center;
+            border: 1px solid rgba(15, 118, 110, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .name-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .name-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(15, 118, 110, 0.2);
+        }
+
+        .name-arabic {
+            font-family: 'Noto Sans Arabic', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .name-transliteration {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .name-meaning {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .names-cta {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .names-cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Daily Islamic Content Section */
+        .daily-content-section {
+            background: var(--dark-bg);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(15, 118, 110, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);
+            opacity: 0.8;
+        }
+
+        .daily-content-section .section-header {
+            position: relative;
+            z-index: 2;
+        }
+
+        .daily-content-section .section-title,
+        .daily-content-section .section-subtitle {
+            color: white;
+        }
+
+        .daily-content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2.5rem;
             position: relative;
             z-index: 2;
+            margin-bottom: 4rem;
         }
 
-        .testimonial-card {
-            background: white;
-            padding: 3rem;
-            border-radius: var(--radius-3xl);
-            box-shadow: var(--shadow-md);
+        .daily-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-2xl);
+            padding: 2.5rem;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(15, 118, 110, 0.1);
         }
 
-        .testimonial-card::before {
-            content: '"';
+        .daily-card::before {
+            content: '';
             position: absolute;
-            top: 2rem;
-            left: 2rem;
-            font-size: 6rem;
-            color: var(--primary-color);
-            opacity: 0.1;
-            font-family: serif;
-            line-height: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
         }
 
-        .testimonial-card:hover {
+        .daily-card:hover {
             transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
             box-shadow: var(--shadow-2xl);
-            border-color: rgba(15, 118, 110, 0.2);
         }
 
-        .stars {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
-
-        .testimonial-text {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .testimonial-author {
+        .daily-card-header {
             display: flex;
             align-items: center;
             gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .daily-card-header i {
+            font-size: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .daily-card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        .arabic-text {
+            font-family: 'Noto Sans Arabic', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .transliteration {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .translation {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .reference {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hadith-text, .wisdom-text {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .hadith-source, .wisdom-source {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .daily-card-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+        }
+
+        .daily-card-footer p {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .daily-content-cta {
+            text-align: center;
             position: relative;
             z-index: 2;
         }
 
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .author-info h4 {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin: 0;
+        .daily-content-cta p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Download Section */
@@ -1091,13 +1263,21 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#names-of-allah">99 Names</a></li>
+                <li><a href="#daily-content">Daily Content</a></li>
+                <li><a href="#islamic-learning">Learning</a></li>
+                <li><a href="#dhikr">Dhikr</a></li>
                 <li><a href="#showcase">App</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -1127,29 +1307,7 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">50K+</div>
-                    <div class="stat-label">Happy Users</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Countries</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">25+</div>
-                    <div class="stat-label">Languages</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1M+</div>
-                    <div class="stat-label">Prayers Tracked</div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Features Section -->
     <section id="features" class="features section">
@@ -1164,41 +1322,82 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🕋</div>
-                    <h3 class="feature-title">Accurate Prayer Times</h3>
+                    <h3 class="feature-title">Prayer Times & Qibla</h3>
                     <p class="feature-description">
-                        Get precise prayer times based on your exact location with multiple calculation methods, 
-                        beautiful notifications, and accurate Qibla direction using advanced GPS technology.
+                        Advanced location-based prayer times with multiple calculation methods including Umm al-Qura, 
+                        ISNA, and MWL. Includes precise Qibla direction and beautiful prayer reminders.
                     </p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📖</div>
-                    <h3 class="feature-title">Complete Holy Quran</h3>
+                    <h3 class="feature-title">Complete Quran</h3>
                     <p class="feature-description">
-                        Read the Holy Quran in stunning Arabic typography with translations in 25+ languages, 
-                        audio recitation by world-renowned Qaris, advanced search, and smart bookmarking.
+                        Full Quran with translations in 25+ languages, audio recitation by world-renowned Qaris, 
+                        advanced search, smart bookmarks, and verse-by-verse commentary.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-title">Daily Hadith & Ayah</h3>
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">Hadith Collections</h3>
                     <p class="feature-description">
-                        Start each day with carefully curated Hadiths and Quranic verses, 
-                        featuring authentic narrations from Sahih collections to inspire and guide your day.
+                        Authentic Hadith from Sahih Bukhari, Sahih Muslim, Sunan Abu Dawood, Tirmidhi, 
+                        and other trusted collections with powerful search and categorization.
                     </p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤲</div>
-                    <h3 class="feature-title">Comprehensive Duas</h3>
+                    <h3 class="feature-title">Duas & Supplications</h3>
                     <p class="feature-description">
-                        Access an extensive collection of authentic Duas for every life situation, 
-                        categorized intelligently with Arabic text, transliteration, and translations.
+                        Comprehensive collection of authentic Duas for daily life, special occasions, 
+                        morning/evening supplications, and protection prayers with audio guidance.
                     </p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📅</div>
-                    <h3 class="feature-title">Islamic Calendar & Events</h3>
+                    <h3 class="feature-title">Islamic Calendar</h3>
                     <p class="feature-description">
-                        Stay connected with important Islamic dates, events, and occasions based on the Hijri calendar, 
-                        with smart notifications for Ramadan, Eid, and blessed nights.
+                        Complete Hijri calendar with important Islamic dates, events, and blessed nights. 
+                        Smart notifications for Ramadan, Hajj seasons, and religious observances.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">99 Names of Allah</h3>
+                    <p class="feature-description">
+                        Beautiful presentation of Asma ul Husna with Arabic text, transliteration, 
+                        meanings, and audio pronunciation for spiritual reflection and memorization.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📿</div>
+                    <h3 class="feature-title">Tasbih Counter</h3>
+                    <p class="feature-description">
+                        Digital prayer beads for dhikr and remembrance with customizable counters, 
+                        vibration feedback, and progress tracking for spiritual goals.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌅</div>
+                    <h3 class="feature-title">Quranic Verses</h3>
+                    <p class="feature-description">
+                        Daily verses with reflection and commentary to inspire and guide your spiritual journey. 
+                        Includes verse of the day with beautiful Arabic calligraphy.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3 class="feature-title">Islamic Articles</h3>
+                    <p class="feature-description">
+                        Educational content about Islamic practices, history, and teachings from 
+                        authentic sources to deepen your understanding of the faith.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Prayer Tracker</h3>
+                    <p class="feature-description">
+                        Track your daily prayers and build consistent Islamic habits with 
+                        progress visualization, streaks, and motivational reminders.
                     </p>
                 </div>
                 <div class="feature-card">
@@ -1206,9 +1405,149 @@
                     <h3 class="feature-title">Offline Access</h3>
                     <p class="feature-description">
                         Enjoy all core features without internet connection. Your spiritual companion 
-                        is always with you, whether you're traveling or in remote locations.
+                        is always with you, whether traveling or in remote locations.
                     </p>
                 </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3 class="feature-title">Night Mode</h3>
+                    <p class="feature-description">
+                        Comfortable reading experience during night prayers and late-night worship 
+                        with beautiful dark themes inspired by Islamic design.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 99 Names of Allah Section -->
+    <section id="names-of-allah" class="names-section section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Asma ul Husna</div>
+                <h2 class="section-title">99 Beautiful Names of Allah</h2>
+                <p class="section-subtitle">
+                    Discover the profound meanings of Allah's beautiful names and enhance your spiritual connection through reflection and remembrance
+                </p>
+            </div>
+            <div class="names-grid">
+                <div class="name-card">
+                    <div class="name-arabic">الرَّحْمَٰنُ</div>
+                    <div class="name-transliteration">Ar-Rahman</div>
+                    <div class="name-meaning">The Most Compassionate</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">الرَّحِيمُ</div>
+                    <div class="name-transliteration">Ar-Raheem</div>
+                    <div class="name-meaning">The Most Merciful</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">الْمَلِكُ</div>
+                    <div class="name-transliteration">Al-Malik</div>
+                    <div class="name-meaning">The King</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">الْقُدُّوسُ</div>
+                    <div class="name-transliteration">Al-Quddus</div>
+                    <div class="name-meaning">The Most Holy</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">السَّلَامُ</div>
+                    <div class="name-transliteration">As-Salam</div>
+                    <div class="name-meaning">The Peace</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">الْمُؤْمِنُ</div>
+                    <div class="name-transliteration">Al-Mu'min</div>
+                    <div class="name-meaning">The Guardian of Faith</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">الْمُهَيْمِنُ</div>
+                    <div class="name-transliteration">Al-Muhaymin</div>
+                    <div class="name-meaning">The Protector</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">الْعَزِيزُ</div>
+                    <div class="name-transliteration">Al-Aziz</div>
+                    <div class="name-meaning">The Mighty</div>
+                </div>
+                <div class="name-card">
+                    <div class="name-arabic">الْجَبَّارُ</div>
+                    <div class="name-transliteration">Al-Jabbar</div>
+                    <div class="name-meaning">The Compeller</div>
+                </div>
+            </div>
+            <div class="names-cta">
+                <p>Explore all 99 names with detailed explanations and audio pronunciations in the app</p>
+                <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-download"></i>
+                    Download App
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Islamic Content Section -->
+    <section id="daily-content" class="daily-content-section section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Daily Inspiration</div>
+                <h2 class="section-title">Daily Islamic Content</h2>
+                <p class="section-subtitle">
+                    Start each day with spiritual nourishment through carefully curated verses, hadiths, and Islamic wisdom
+                </p>
+            </div>
+            <div class="daily-content-grid">
+                <div class="daily-card verse-card">
+                    <div class="daily-card-header">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Verse of the Day</h3>
+                    </div>
+                    <div class="daily-card-content">
+                        <div class="arabic-text">وَمَن يَتَّقِ ٱللَّهَ يَجْعَل لَّهُۥ مَخْرَجًا</div>
+                        <div class="transliteration">Wa man yattaqi Allaha yaj'al lahu makhrajan</div>
+                        <div class="translation">"And whoever fears Allah - He will make for him a way out"</div>
+                        <div class="reference">- Quran 65:2</div>
+                    </div>
+                    <div class="daily-card-footer">
+                        <p>Reflection: Trust in Allah's wisdom and timing brings relief and solutions to our difficulties.</p>
+                    </div>
+                </div>
+                
+                <div class="daily-card hadith-card">
+                    <div class="daily-card-header">
+                        <i class="fas fa-scroll"></i>
+                        <h3>Hadith of the Day</h3>
+                    </div>
+                    <div class="daily-card-content">
+                        <div class="hadith-text">"The believer is not one who eats his fill while his neighbor goes hungry."</div>
+                        <div class="hadith-source">- Prophet Muhammad ﷺ (Authenticated by Al-Albani)</div>
+                    </div>
+                    <div class="daily-card-footer">
+                        <p>Teaching: Islam emphasizes compassion and social responsibility towards our community.</p>
+                    </div>
+                </div>
+                
+                <div class="daily-card wisdom-card">
+                    <div class="daily-card-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Islamic Wisdom</h3>
+                    </div>
+                    <div class="daily-card-content">
+                        <div class="wisdom-text">"Patience is half of faith, and certainty is faith in its entirety."</div>
+                        <div class="wisdom-source">- Ali ibn Abi Talib (RA)</div>
+                    </div>
+                    <div class="daily-card-footer">
+                        <p>Insight: Developing patience and trust in Allah's plan strengthens our spiritual foundation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="daily-content-cta">
+                <p>Get fresh Islamic content delivered daily to inspire and guide your spiritual journey</p>
+                <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-star"></i>
+                    Get Daily Content
+                </a>
             </div>
         </div>
     </section>
@@ -1280,59 +1619,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Testimonials</div>
-                <h2 class="section-title">Loved by Muslims Worldwide</h2>
-                <p class="section-subtitle">
-                    Join thousands of satisfied Muslims who have made Salamly an essential part of their daily spiritual routine
-                </p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "Salamly has completely transformed my daily prayers. The accurate prayer times and beautiful Quran recitation help me stay connected to my faith throughout the busy day. Barakallahu feeki!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Sister Aisha Rahman</h4>
-                            <p>London, United Kingdom</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "As a frequent traveler for business, having accurate prayer times and Qibla direction wherever I go is invaluable. The offline feature is a real game-changer. Jazakallahu khairan!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <h4>Brother Ahmed Al-Mansouri</h4>
-                            <p>Dubai, United Arab Emirates</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "The daily hadith and Quranic verses feature is my absolute favorite. It's like having a gentle reminder from Allah every morning. May Allah bless the developers."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">F</div>
-                        <div class="author-info">
-                            <h4>Sister Fatima Khan</h4>
-                            <p>Toronto, Canada</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Download Section -->
     <section id="download" class="download section">
