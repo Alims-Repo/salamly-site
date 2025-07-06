@@ -933,6 +933,426 @@
             margin-right: auto;
         }
 
+        /* Islamic Learning Hub Section */
+        .learning-section {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learning-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(15, 118, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            opacity: 0.7;
+        }
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 4rem;
+        }
+
+        .learning-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            overflow: hidden;
+            border: 1px solid rgba(15, 118, 110, 0.1);
+            position: relative;
+        }
+
+        .learning-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .learning-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(15, 118, 110, 0.2);
+        }
+
+        .learning-card-header {
+            padding: 2rem 2rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .learning-card-header i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .learning-card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .learning-card-content {
+            padding: 0 2rem 2rem;
+        }
+
+        /* Pillars Card Specific Styles */
+        .pillars-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pillar-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+        }
+
+        .pillar-item:hover {
+            background: var(--light-secondary);
+            transform: translateX(5px);
+        }
+
+        .pillar-number {
+            width: 35px;
+            height: 35px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .pillar-text {
+            flex: 1;
+        }
+
+        .pillar-text strong {
+            color: var(--primary-color);
+        }
+
+        /* Calendar Events Specific Styles */
+        .calendar-events {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .event-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+        }
+
+        .event-item:hover {
+            background: var(--light-secondary);
+            transform: translateX(5px);
+        }
+
+        .event-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .event-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Prayer Guide Specific Styles */
+        .guide-topics {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: var(--light-secondary);
+            transform: translateX(5px);
+        }
+
+        .topic-item i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Etiquette Specific Styles */
+        .etiquette-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .etiquette-item {
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: var(--radius-lg);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .etiquette-item:hover {
+            background: var(--light-secondary);
+            transform: translateX(5px);
+        }
+
+        .etiquette-item strong {
+            color: var(--primary-color);
+        }
+
+        .learning-cta {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .learning-cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Dhikr & Remembrance Section */
+        .dhikr-section {
+            background: var(--dark-bg);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dhikr-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(15, 118, 110, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);
+            opacity: 0.8;
+        }
+
+        .dhikr-section .section-header {
+            position: relative;
+            z-index: 2;
+        }
+
+        .dhikr-section .section-title,
+        .dhikr-section .section-subtitle {
+            color: white;
+        }
+
+        .dhikr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 4rem;
+        }
+
+        .dhikr-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-2xl);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .dhikr-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .dhikr-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .dhikr-card-header {
+            padding: 2rem 2rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dhikr-card-header i {
+            font-size: 1.8rem;
+            color: var(--accent-light);
+        }
+
+        .dhikr-card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        .dhikr-card-content {
+            padding: 0 2rem 2rem;
+        }
+
+        .dhikr-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .dhikr-arabic {
+            font-family: 'Noto Sans Arabic', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .dhikr-transliteration {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.8rem;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .dhikr-translation {
+            font-size: 1.1rem;
+            color: white;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .dhikr-counter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .counter-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .counter-value {
+            color: var(--accent-light);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Tasbih specific styles */
+        .tasbih-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tasbih-item {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tasbih-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .tasbih-text {
+            display: block;
+            font-family: 'Noto Sans Arabic', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .tasbih-meaning {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .tasbih-count {
+            display: block;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .dhikr-cta {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dhikr-cta p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* Download Section */
         .download {
             background: var(--gradient-hero);
@@ -1182,6 +1602,15 @@
                 display: flex;
             }
 
+            .nav-controls {
+                gap: 0.5rem;
+            }
+
+            .theme-toggle {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
             .mobile-menu-btn {
                 display: block;
             }
@@ -1195,26 +1624,21 @@
                 padding: 6rem 1rem;
             }
 
-            .features-grid {
+            .features-grid,
+            .names-grid,
+            .daily-content-grid,
+            .learning-grid,
+            .dhikr-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .feature-card {
+            .feature-card,
+            .name-card,
+            .daily-card,
+            .learning-card,
+            .dhikr-card {
                 padding: 2rem;
-            }
-
-            .stats {
-                padding: 4rem 1rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
             }
 
             .download-buttons {
@@ -1552,6 +1976,297 @@
         </div>
     </section>
 
+    <!-- Islamic Learning Hub Section -->
+    <section id="islamic-learning" class="learning-section section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Learn & Grow</div>
+                <h2 class="section-title">Islamic Learning Hub</h2>
+                <p class="section-subtitle">
+                    Deepen your knowledge of Islam through comprehensive guides and educational content
+                </p>
+            </div>
+            <div class="learning-grid">
+                <div class="learning-card pillars-card">
+                    <div class="learning-card-header">
+                        <i class="fas fa-mosque"></i>
+                        <h3>Five Pillars of Islam</h3>
+                    </div>
+                    <div class="learning-card-content">
+                        <div class="pillars-list">
+                            <div class="pillar-item">
+                                <span class="pillar-number">1</span>
+                                <div class="pillar-text">
+                                    <strong>Shahada</strong> - Declaration of Faith
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <span class="pillar-number">2</span>
+                                <div class="pillar-text">
+                                    <strong>Salah</strong> - Five Daily Prayers
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <span class="pillar-number">3</span>
+                                <div class="pillar-text">
+                                    <strong>Zakat</strong> - Charitable Giving
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <span class="pillar-number">4</span>
+                                <div class="pillar-text">
+                                    <strong>Sawm</strong> - Fasting in Ramadan
+                                </div>
+                            </div>
+                            <div class="pillar-item">
+                                <span class="pillar-number">5</span>
+                                <div class="pillar-text">
+                                    <strong>Hajj</strong> - Pilgrimage to Mecca
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="learning-card calendar-card">
+                    <div class="learning-card-header">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Islamic Calendar Events</h3>
+                    </div>
+                    <div class="learning-card-content">
+                        <div class="calendar-events">
+                            <div class="event-item">
+                                <span class="event-date">Muharram 1</span>
+                                <span class="event-name">Islamic New Year</span>
+                            </div>
+                            <div class="event-item">
+                                <span class="event-date">Muharram 10</span>
+                                <span class="event-name">Day of Ashura</span>
+                            </div>
+                            <div class="event-item">
+                                <span class="event-date">Rabi' I 12</span>
+                                <span class="event-name">Mawlid (Sunni)</span>
+                            </div>
+                            <div class="event-item">
+                                <span class="event-date">Ramadan</span>
+                                <span class="event-name">Month of Fasting</span>
+                            </div>
+                            <div class="event-item">
+                                <span class="event-date">Shawwal 1</span>
+                                <span class="event-name">Eid al-Fitr</span>
+                            </div>
+                            <div class="event-item">
+                                <span class="event-date">Dhul Hijjah 10</span>
+                                <span class="event-name">Eid al-Adha</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="learning-card prayer-guide-card">
+                    <div class="learning-card-header">
+                        <i class="fas fa-praying-hands"></i>
+                        <h3>Prayer Guides</h3>
+                    </div>
+                    <div class="learning-card-content">
+                        <div class="guide-topics">
+                            <div class="topic-item">
+                                <i class="fas fa-water"></i>
+                                <span>Wudu (Ablution) Steps</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-compass"></i>
+                                <span>Finding Qibla Direction</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-book-open"></i>
+                                <span>Prayer Recitations</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Prayer Timing Rules</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-users"></i>
+                                <span>Congregational Prayer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="learning-card etiquette-card">
+                    <div class="learning-card-header">
+                        <i class="fas fa-heart"></i>
+                        <h3>Islamic Etiquette</h3>
+                    </div>
+                    <div class="learning-card-content">
+                        <div class="etiquette-items">
+                            <div class="etiquette-item">
+                                <strong>Greeting:</strong> Say "As-salamu alaykum" with a smile
+                            </div>
+                            <div class="etiquette-item">
+                                <strong>Eating:</strong> Begin with "Bismillah" and eat with right hand
+                            </div>
+                            <div class="etiquette-item">
+                                <strong>Mosque:</strong> Remove shoes and maintain silence
+                            </div>
+                            <div class="etiquette-item">
+                                <strong>Parents:</strong> Show respect and obedience at all times
+                            </div>
+                            <div class="etiquette-item">
+                                <strong>Neighbors:</strong> Be kind and helpful to those around you
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="learning-cta">
+                <p>Access comprehensive Islamic education and step-by-step guides in our app</p>
+                <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-graduation-cap"></i>
+                    Start Learning
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dhikr & Remembrance Section -->
+    <section id="dhikr" class="dhikr-section section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Remembrance</div>
+                <h2 class="section-title">Dhikr & Remembrance</h2>
+                <p class="section-subtitle">
+                    Engage in the beautiful practice of remembering Allah through authentic supplications and dhikr
+                </p>
+            </div>
+            <div class="dhikr-grid">
+                <div class="dhikr-card morning-card">
+                    <div class="dhikr-card-header">
+                        <i class="fas fa-sun"></i>
+                        <h3>Morning Supplications</h3>
+                    </div>
+                    <div class="dhikr-card-content">
+                        <div class="dhikr-item">
+                            <div class="dhikr-arabic">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ</div>
+                            <div class="dhikr-transliteration">Asbahna wa asbahal-mulku lillah</div>
+                            <div class="dhikr-translation">"We have reached the morning and at this very time the dominion belongs to Allah."</div>
+                        </div>
+                        <div class="dhikr-counter">
+                            <span class="counter-label">Recommended:</span>
+                            <span class="counter-value">1 time</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dhikr-card evening-card">
+                    <div class="dhikr-card-header">
+                        <i class="fas fa-moon"></i>
+                        <h3>Evening Supplications</h3>
+                    </div>
+                    <div class="dhikr-card-content">
+                        <div class="dhikr-item">
+                            <div class="dhikr-arabic">أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ</div>
+                            <div class="dhikr-transliteration">Amsayna wa amsal-mulku lillah</div>
+                            <div class="dhikr-translation">"We have reached the evening and at this very time the dominion belongs to Allah."</div>
+                        </div>
+                        <div class="dhikr-counter">
+                            <span class="counter-label">Recommended:</span>
+                            <span class="counter-value">1 time</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dhikr-card tasbih-card">
+                    <div class="dhikr-card-header">
+                        <i class="fas fa-prayer-beads"></i>
+                        <h3>Tasbih (Glorification)</h3>
+                    </div>
+                    <div class="dhikr-card-content">
+                        <div class="tasbih-items">
+                            <div class="tasbih-item">
+                                <span class="tasbih-text">سُبْحَانَ اللَّهِ</span>
+                                <span class="tasbih-meaning">SubhanAllah (Glory to Allah)</span>
+                                <span class="tasbih-count">33 times</span>
+                            </div>
+                            <div class="tasbih-item">
+                                <span class="tasbih-text">الْحَمْدُ لِلَّهِ</span>
+                                <span class="tasbih-meaning">Alhamdulillah (Praise to Allah)</span>
+                                <span class="tasbih-count">33 times</span>
+                            </div>
+                            <div class="tasbih-item">
+                                <span class="tasbih-text">اللَّهُ أَكْبَرُ</span>
+                                <span class="tasbih-meaning">Allahu Akbar (Allah is Greatest)</span>
+                                <span class="tasbih-count">34 times</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dhikr-card istighfar-card">
+                    <div class="dhikr-card-header">
+                        <i class="fas fa-heart"></i>
+                        <h3>Istighfar (Seeking Forgiveness)</h3>
+                    </div>
+                    <div class="dhikr-card-content">
+                        <div class="dhikr-item">
+                            <div class="dhikr-arabic">أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ</div>
+                            <div class="dhikr-transliteration">Astaghfirullaha al-azeem alladhi la ilaha illa huwa al-hayyu al-qayyumu wa atubu ilayh</div>
+                            <div class="dhikr-translation">"I seek forgiveness from Allah the Mighty, whom there is none worthy of worship except Him, the Living, the Eternal, and I repent to Him."</div>
+                        </div>
+                        <div class="dhikr-counter">
+                            <span class="counter-label">Recommended:</span>
+                            <span class="counter-value">100 times daily</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dhikr-card salawat-card">
+                    <div class="dhikr-card-header">
+                        <i class="fas fa-star-and-crescent"></i>
+                        <h3>Salawat (Blessings on Prophet)</h3>
+                    </div>
+                    <div class="dhikr-card-content">
+                        <div class="dhikr-item">
+                            <div class="dhikr-arabic">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ</div>
+                            <div class="dhikr-transliteration">Allahumma salli ala Muhammad wa ala ali Muhammad</div>
+                            <div class="dhikr-translation">"O Allah, send blessings upon Muhammad and upon the family of Muhammad."</div>
+                        </div>
+                        <div class="dhikr-counter">
+                            <span class="counter-label">Especially on:</span>
+                            <span class="counter-value">Fridays</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dhikr-card comprehensive-card">
+                    <div class="dhikr-card-header">
+                        <i class="fas fa-infinity"></i>
+                        <h3>Comprehensive Dhikr</h3>
+                    </div>
+                    <div class="dhikr-card-content">
+                        <div class="dhikr-item">
+                            <div class="dhikr-arabic">لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ</div>
+                            <div class="dhikr-transliteration">La ilaha illa Allah wahdahu la sharika lah, lahu al-mulku wa lahu al-hamdu wa huwa ala kulli shay'in qadir</div>
+                            <div class="dhikr-translation">"There is no god but Allah alone, with no partner. His is the dominion and the praise, and He has power over all things."</div>
+                        </div>
+                        <div class="dhikr-counter">
+                            <span class="counter-label">Recommended:</span>
+                            <span class="counter-value">10 times after Fajr & Maghrib</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dhikr-cta">
+                <p>Experience the peace and tranquility of remembering Allah with our guided dhikr features</p>
+                <a href="https://play.google.com/store/apps/details?id=com.nelu.salamly" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-prayer-beads"></i>
+                    Start Dhikr
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- App Showcase Section -->
     <section id="showcase" class="app-showcase section">
         <div class="container">
@@ -1749,6 +2464,32 @@
             }
         });
 
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fas fa-sun';
+        }
+
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -1779,7 +2520,7 @@
         });
 
         // Add smooth hover effects
-        document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
+        document.querySelectorAll('.feature-card, .name-card, .daily-card, .learning-card, .dhikr-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
             });
